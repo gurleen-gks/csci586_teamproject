@@ -1,0 +1,18 @@
+@prefix test:  <http://example.com#> .
+
+[ test:a_episodes  "1"^^<http://www.w3.org/2001/XMLSchema#double> ;
+  test:a_producer  "sunrise,bandai visual" ;
+  test:a_rating    "r - 17+ (violence & profanity)" ;
+  test:a_title     "Cowboy Bebop The Movie" ;
+  <http://w3c/future-csv-vocab/row>
+          2
+] .
+
+[ test:a_broadcast  "saturdays at 0100 (jst)" ;
+  test:a_episodes   "26"^^<http://www.w3.org/2001/XMLSchema#double> ;
+  test:a_producer   "bandai visual" ;
+  test:a_rating     "r - 17+ (violence & profanity)" ;
+  test:a_title      "Cowboy Bebop" ;
+  <http://w3c/future-csv-vocab/row>
+          1
+] .
