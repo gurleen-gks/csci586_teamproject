@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <title>DBI Proejct CSCI586</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
@@ -31,7 +32,9 @@
                 </select>
             </div>
             <div class="col-xs-2">
-                <button id="findCharacters" class="btn btn-primary"><i class="glyphicon glyphicon-refresh"></i>&nbsp;Find Characters</button>
+                <button id="findCharacters" class="btn btn-primary"><i class="glyphicon glyphicon-refresh"></i>&nbsp;Find
+                    Characters
+                </button>
             </div>
         </div>
         <br>
@@ -49,9 +52,30 @@
         </table>
     </fieldset>
     <fieldset class="staff-query-container">
-
+        <legend>Most Popular Staff</legend>
+    </fieldset>
+    <fieldset class="location-query-container">
+        <legend>Anime By Location</legend>
+        <div class="row">
+            <div class="col-xs-8">
+                <label for="selAnimeByLocations">Locations</label>
+                <select name="selAnimeByLocations" id="selAnimeByLocations" multiple>
+                    <option value="London">London</option>
+                    <option value="New York">New York</option>
+                </select>
+            </div>
+            <div class="col-xs-4">
+                <button id="findAnimeByLocations" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i>&nbsp;Find
+                    Animes
+                </button>
+            </div>
+        </div>
+        <div id="mapLocation" style="width:400px;height: 400px;"></div>
     </fieldset>
 </div>
-<script src="main.js"></script>
+<script async src="main.js"></script>
+<script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxM_HY-Nce84rG-7Gxy_cw1Q051x5FAP0">
+</script>
 </body>
 </html>

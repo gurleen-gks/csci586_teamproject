@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Simple markers</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+		var API_KEY = 'AIzaSyBxM_HY-Nce84rG-7Gxy_cw1Q051x5FAP0';
+		
+		function pinPlacesOnMap(places,map, geocoder){
+			places.forEach(function(i){
+				var promise = new Promise((resolve,reject)=>{
+					geocoder.geocode({'address': i}, function(results, status) {
+					  if (status === 'OK') {
+						resolve(results[0].geometry.location);
+					  } else {
+						reject('Geocode was not successful for the following reason: ' + status);
+					  }
+					});
+				});
+				promise.then(location=>{
+					map.setCenter(location);
+					var infowindow = new google.maps.InfoWindow();
+					var marker = new google.maps.Marker({
+					  position: location,
+					  map: map,
+					  title: i
+					});
+					google.maps.event.addListener(marker, 'click', (function(marker) {
+						return function() {
+						  infowindow.setContent(i);
+						  infowindow.open(map, marker);
+						}
+					})(marker));
+				});
+			});
+		}
+
+      function initMap() {
+		var places = ["London","Delhi, India", "Boston"];
+		var myLatLng = {lat: -25.363, lng: 131.044};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: myLatLng
+        });
+		var geocoder = new google.maps.Geocoder();
+		
+		pinPlacesOnMap(places, map, geocoder);
+	  }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxM_HY-Nce84rG-7Gxy_cw1Q051x5FAP0&callback=initMap">
+    </script>
+  </body>
+</html>
