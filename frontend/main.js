@@ -1,5 +1,5 @@
 'use strict'
-const SPARQL_ENDPOINT = 'http://localhost:3030/nov15_2/query';
+const SPARQL_ENDPOINT = 'http://localhost:3030/new/query';
 const QUERY_PREFIX = "prefix ns2: <http://www.semanticweb.org/gurleenk/ontologies/2017/10/raw-ontology#>";
 
 function getSubject(str) {
@@ -76,16 +76,16 @@ $(() => {
             // response.results.bindings.forEach(o => {
             //     let subject = getSubject(o.subject.value);
             //     let object = getSubject(o.object.value);
-                let places = ["New York", "Los Angeles", "Boston"];
-                var myLatLng = {lat: -25.363, lng: 131.044};
+            let places = ["New York", "Los Angeles", "Boston"];
+            var myLatLng = {lat: -25.363, lng: 131.044};
 
-                var map = new google.maps.Map(document.getElementById('mapLocation'), {
-                    zoom: 4,
-                    center: myLatLng
-                });
-                var geocoder = new google.maps.Geocoder();
+            var map = new google.maps.Map(document.getElementById('mapLocation'), {
+                zoom: 4,
+                center: myLatLng
+            });
+            var geocoder = new google.maps.Geocoder();
 
-                pinPlacesOnMap(places, map, geocoder, places);
+            pinPlacesOnMap(places, map, geocoder, places);
             // });
         })
     });
@@ -98,27 +98,27 @@ $(() => {
             url: SPARQL_ENDPOINT,
             method: 'post',
             data: {
-                query: QUERY_PREFIX + " SELECT   ?characterName  ?loveCount " +
+                query: QUERY_PREFIX + " prefix ns2:    <http://www.semanticweb.org/gurleenk/ontologies/2017/10/raw-ontology#> " +
+                " SELECT ?name ?loverank " +
                 " WHERE { " +
-                "      ?subject ns2:hasCharacter ?object. " +
-                " ?object ns2:hasName ?characterName; " +
-                " ns2:hasTag \"" + characterTag + "\"; " +
-                " ns2:hasLoveRank ?loveCount; " +
+                "           ?subject ns2:hasCharacter ?charactername; " +
                 " ns2:hasAgeRating ns2:" + ageRating + ". " +
-                "  " +
-                " } ORDER BY DESC (?loveCount) " +
-                " LIMIT 10"
+                "   ?charactername ns2:hasName ?name; " +
+                " ns2:hasTag \""+characterTag+"\"; " +
+                " ns2:hasLoveRank ?loverank. " +
+                " } " +
+                " ORDER BY DESC (?loverank)"
             }
         }).then(response => {
             response.results.bindings.forEach(o => {
-                let subject = getSubject(o.characterName.value);
-                let object = getSubject(o.loveCount.value);
+                let subject = getSubject(o.name.value);
+                let object = getSubject(o.loverank.value);
                 let $tr = $("<tr>");
                 let $td_one = $("<td>", {
                     html: subject
                 });
                 let $td_two = $("<td>", {
-                    html: 'nitin'
+                    html: ''
                 });
                 let $td_three = $("<td>", {
                     html: object
