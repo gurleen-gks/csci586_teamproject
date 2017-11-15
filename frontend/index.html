@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DBI Proejct CSCI586</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h2>CSCI 586 Project</h2>
+    <fieldset class="age-character-query-container">
+        <legend>Popular Characters</legend>
+        <div class="row">
+            <div class="col-xs-5">
+                <label for="ageRating">Age Rating</label>
+                <select id="ageRating">
+                    <option value="PG-13">PG-13</option>
+                    <option value="R">R</option>
+                </select>
+            </div>
+            <div class="col-xs-5">
+                <label for="characterTags">Character Tags</label>
+                <select id="characterTags" multiple>
+                    <option value="Teenagers">Teenagers</option>
+                    <option value="Spies">Spies</option>
+                </select>
+            </div>
+            <div class="col-xs-2">
+                <button id="findCharacters" class="btn btn-primary"><i class="glyphicon glyphicon-refresh"></i>&nbsp;Find Characters</button>
+            </div>
+        </div>
+        <br>
+        <table class="table table-responsive table-bordered table-striped results">
+            <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Animes</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </fieldset>
+    <fieldset class="staff-query-container">
+
+    </fieldset>
+</div>
+<script src="main.js"></script>
+</body>
+</html>

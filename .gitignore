@@ -1,4 +1,5 @@
 # csci586_teamproject
-apachejena/.idea/*
+.idea/*
 apachejena/target
-apachejena/*.iml
+*.iml
+
