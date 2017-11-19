@@ -14,64 +14,211 @@
 <body>
 <div class="container">
     <h2>CSCI 586 Project</h2>
-    <fieldset class="age-character-query-container">
-        <legend>Popular Characters</legend>
-        <div class="row">
-            <div class="col-xs-5">
-                <label for="ageRating">Age Rating</label>
-                <select id="ageRating">
-                    <option value="PG-13">PG-13</option>
-                    <option value="R">R</option>
-                </select>
-            </div>
-            <div class="col-xs-5">
-                <label for="characterTags">Character Tags</label>
-                <select id="characterTags" multiple>
-                    <option value="Teenagers">Teenagers</option>
-                    <option value="Spies">Spies</option>
-                </select>
-            </div>
-            <div class="col-xs-2">
-                <button id="findCharacters" class="btn btn-primary"><i class="glyphicon glyphicon-refresh"></i>&nbsp;Find
-                    Characters
-                </button>
-            </div>
-        </div>
-        <br>
-        <table class="table table-responsive table-bordered table-striped results">
-            <thead>
-            <tr>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Animes</th>
-            </tr>
-            </thead>
-            <tbody>
+    <div>
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Popular
+                Characters</a></li>
+            <li role="presentation"><a href="#broadcast" aria-controls="broadcast" role="tab" data-toggle="tab">Anime By
+                Broadcast Time</a></li>
+            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Most Popular
+                Staff</a></li>
+            <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Anime By
+                Location</a></li>
+            <li role="presentation"><a href="#deviation" aria-controls="deviation" role="tab" data-toggle="tab">Anime By
+                Deviation</a></li>
+        </ul>
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="home">
+                <fieldset class="age-character-query-container">
+                    <br>
+                    <div class="row">
+                        <div class="col-xs-5">
+                            <label for="ageRating">Age Rating</label>
+                            <select id="ageRating">
+                                <option value="PG-13" selected>PG-13</option>
+                                <option value="R-17">R-17</option>
+                                <option value="R">R</option>
+                                <option value="PG">PG</option>
+                                <option value="G">G</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-5">
+                            <label for="characterTags">Character Tags</label>
+                            <select id="characterTags">
+                                <option value="Animals" selected>Animals</option>
+                                <option value="Spies">Spies</option>
+                                <option value="Teenagers">Teenagers</option>
+                                <option value="Hats">Hats</option>
+                                <option value="Facial Hair">Facial Hair</option>
+                                <option value="Adults">Adults</option>
+                                <option value="Children">Children</option>
+                                <option value="Cats">Cats</option>
+                                <option value="Rosy Cheeks">Rosy Cheeks</option>
+                                <option value="Ninja">Ninja</option>
 
-            </tbody>
-        </table>
-    </fieldset>
-    <fieldset class="staff-query-container">
-        <legend>Most Popular Staff</legend>
-    </fieldset>
-    <fieldset class="location-query-container">
-        <legend>Anime By Location</legend>
-        <div class="row">
-            <div class="col-xs-8">
-                <label for="selAnimeByLocations">Locations</label>
-                <select name="selAnimeByLocations" id="selAnimeByLocations" multiple>
-                    <option value="London">London</option>
-                    <option value="New York">New York</option>
-                </select>
+                            </select>
+                        </div>
+                        <div class="col-xs-2">
+                            <button id="findCharacters" class="btn btn-primary"><i
+                                    class="glyphicon glyphicon-refresh"></i>&nbsp;Find
+                                Characters
+                            </button>
+                        </div>
+                    </div>
+                    <br>
+                    <table class="table table-responsive table-bordered table-striped results">
+                        <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Animes</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </fieldset>
             </div>
-            <div class="col-xs-4">
-                <button id="findAnimeByLocations" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i>&nbsp;Find
-                    Animes
-                </button>
+            <div role="tabpanel" class="tab-pane active" id="broadcast">
+                <fieldset class="broadcast-time-query-container">
+                    <br>
+                    <div class="row">
+                        <div class="col-xs-5">
+                            <label for="broadcastDay">Broadcast Day</label>
+                            <select id="broadcastDay">
+                                <option value="mondays " selected>Monday</option>
+                                <option value="tuesdays">Tuesday</option>
+                                <option value="wednesdays ">Wednesday</option>
+                                <option value="thursdays ">Thursday</option>
+                                <option value="fridays ">Friday</option>
+                                <option value="saturdays ">Saturday</option>
+                                <option value="sundays ">Sunday</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-5">
+                            <label for="broadcastTime">Broadcast Time</label>
+                            <select id="broadcastTime">
+                                <option value="0100 (jst)" selected>01:00</option>
+                                <option value="1800 (jst)">18:00</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-2">
+                            <button id="findMostPopular" class="btn btn-primary"><i
+                                    class="glyphicon glyphicon-refresh"></i>&nbsp;Find
+                                Most Popular
+                            </button>
+                        </div>
+                    </div>
+                    <br>
+                    <table class="table table-responsive table-bordered table-striped results">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Score</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </fieldset>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="deviation">
+                <fieldset class="deviation-query-container">
+                    <br>
+                    <div class="row">
+                        <div class="col-xs-5">
+                            <button id="findDeviation" class="btn btn-primary"><i
+                                    class="glyphicon glyphicon-refresh"></i>&nbsp;Find Rating Deviation
+                            </button>
+                        </div>
+                    </div>
+                    <br>
+                    <table class="table table-responsive table-bordered table-striped results">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Anime List Rating</th>
+                            <th>Anime Planet</th>
+                            <th>Deviation</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </fieldset>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="profile">
+                <fieldset class="staff-query-container">
+                    <br>
+                    <div class="row">
+                        <div class="col-xs-5">
+                            <label for="staffCategory">Staff Category</label>
+                            <select id="staffCategory">
+                                <option value="Director" selected>Director</option>
+                                <option value="Producer">Producer</option>
+                                <option value="Voice Actor">Voice Actor</option>
+                                <option value="Licensor">Licensor</option>
+                                <option value="Studio">Studio</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-2">
+                            <button id="findTop5" class="btn btn-primary"><i
+                                    class="glyphicon glyphicon-refresh"></i>&nbsp;Find Best
+                                5
+                            </button>
+                        </div>
+                    </div>
+                    <br>
+                    <table class="table table-responsive table-bordered table-striped results">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Average Rating</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </fieldset>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="messages">
+                <fieldset class="location-query-container">
+                    <br>
+                    <div class="row">
+                        <div class="col-xs-10">
+                            <label for="selAnimeByLocations">Locations</label>
+                            <select name="selAnimeByLocations" id="selAnimeByLocations">
+                                <option value="United States" selected >United States</option>
+                                <option value="Canada">Canada</option>
+                                <option value="Australia">Australia</option>
+                                <option value="England">England</option>
+                                <option value="Sweden">Sweden</option>
+                                <option value="California">California</option>
+                                <option value="United Kingdom">United Kingdom</option>
+                                <option value="Texas">Texas</option>
+                                <option value="UK">UK</option>
+                                <option value="Germany">Germany</option>
+                                <option value="New York">New York</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-2">
+                            <button id="findAnimeByLocations" class="btn btn-primary"><i
+                                    class="glyphicon glyphicon-search"></i>&nbsp;Find
+                                Animes
+                            </button>
+                        </div>
+                    </div>
+                    <br>
+                    <div id="mapLocation" style="width:100%;height: 400px;"></div>
+                </fieldset>
             </div>
         </div>
-        <div id="mapLocation" style="width:400px;height: 400px;"></div>
-    </fieldset>
+
+    </div>
+
 </div>
 <script async src="main.js"></script>
 <script async
