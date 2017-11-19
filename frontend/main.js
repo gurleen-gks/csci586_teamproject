@@ -293,31 +293,92 @@ $(() => {
                 " LIMIT 5"
             }
         }).then(response => {
-            resultsTable.empty()
-            response.results.bindings.forEach(o => {
-                let subject = getSubject(o.name.value);
-                let object = getSubject(o.myAnimeScore.value);
-                let object1 = getSubject(o.animePlanetOverAllRating.value);
-                let object2 = getSubject(o.deviation.value);
-                let $tr = $("<tr>");
-                let $td_one = $("<td>", {
-                    html: subject
-                });
-                let $td_two = $("<td>", {
-                    html: object
-                });
-                let $td_three = $("<td>", {
-                    html: object1
-                });
-                let $td_four = $("<td>", {
-                    html: object2
-                });
-                $tr.append($td_one);
-                $tr.append($td_two);
-                $tr.append($td_three);
-                $tr.append($td_four);
-                resultsTable.append($tr);
-            });
+            createDeviationChart(response.results.bindings);
+            // resultsTable.empty()
+            // response.results.bindings.forEach(o => {
+            //     let subject = getSubject(o.name.value);
+            //     let object = getSubject(o.myAnimeScore.value);
+            //     let object1 = getSubject(o.animePlanetOverAllRating.value);
+            //     let object2 = getSubject(o.deviation.value);
+            //     let $tr = $("<tr>");
+            //     let $td_one = $("<td>", {
+            //         html: subject
+            //     });
+            //     let $td_two = $("<td>", {
+            //         html: object
+            //     });
+            //     let $td_three = $("<td>", {
+            //         html: object1
+            //     });
+            //     let $td_four = $("<td>", {
+            //         html: object2
+            //     });
+            //     $tr.append($td_one);
+            //     $tr.append($td_two);
+            //     $tr.append($td_three);
+            //     $tr.append($td_four);
+            //     resultsTable.append($tr);
+            // });
         });
     });
 });
+
+function createDeviationChart(results){
+    Highcharts.chart('deviationChartContainer', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Monthly Average Rainfall'
+        },
+        subtitle: {
+            text: 'Source: WorldClimate.com'
+        },
+        xAxis: {
+            categories: [
+                'Jan',
+                'Feb',
+                'Mar',
+                'Apr',
+                'May',
+                'Jun',
+                'Jul',
+                'Aug',
+                'Sep',
+                'Oct',
+                'Nov',
+                'Dec'
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Rainfall (mm)'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Tokyo',
+            data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+
+        }, {
+            name: 'Berlin',
+            data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
+
+        }]
+    });
+}
