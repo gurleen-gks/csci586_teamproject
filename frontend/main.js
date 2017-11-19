@@ -273,7 +273,7 @@ $(() => {
             method: 'post',
             data: {
                 query: QUERY_PREFIX +
-                       QUERY_PREFIX2+
+                QUERY_PREFIX2+
                 " SELECT ?myAnimeScore (AVG(?rating) AS ?animePlanetOverAllRating) ((?myAnimeScore - ?animePlanetOverAllRating) AS ?deviation) ?name " +
                 " WHERE { " +
                 "      ?subject ns2:hasReview ?review;"+
