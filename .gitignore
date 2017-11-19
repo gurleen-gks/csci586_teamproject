@@ -1,5 +1,6 @@
 # csci586_teamproject
 .idea/*
+frontend/.idea/*
 apachejena/target
 *.iml
 
