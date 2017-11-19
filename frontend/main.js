@@ -185,7 +185,7 @@ $(() => {
                     html: subject
                 });
                 let $td_two = $("<td>", {
-                    html: "<img src='" + imageUrl + "' />"
+                    html: "<img height=200, width='200' src='" + imageUrl + "' />"
                 });
                 let $td_three = $("<td>", {
                     html: object
@@ -222,7 +222,8 @@ $(() => {
                 let object = getSubject(o.animeScore.value);
                 let $tr = $("<tr>");
                 let $td_one = $("<td>", {
-                    html: subject
+                    html: subject,
+                    "class":'text-capitalize'
                 });
                 let $td_two = $("<td>", {
                     html: object
@@ -294,31 +295,31 @@ $(() => {
             }
         }).then(response => {
             createDeviationChart(response.results.bindings);
-            // resultsTable.empty()
-            // response.results.bindings.forEach(o => {
-            //     let subject = getSubject(o.name.value);
-            //     let object = getSubject(o.myAnimeScore.value);
-            //     let object1 = getSubject(o.animePlanetOverAllRating.value);
-            //     let object2 = getSubject(o.deviation.value);
-            //     let $tr = $("<tr>");
-            //     let $td_one = $("<td>", {
-            //         html: subject
-            //     });
-            //     let $td_two = $("<td>", {
-            //         html: object
-            //     });
-            //     let $td_three = $("<td>", {
-            //         html: object1
-            //     });
-            //     let $td_four = $("<td>", {
-            //         html: object2
-            //     });
-            //     $tr.append($td_one);
-            //     $tr.append($td_two);
-            //     $tr.append($td_three);
-            //     $tr.append($td_four);
-            //     resultsTable.append($tr);
-            // });
+            resultsTable.empty()
+            response.results.bindings.forEach(o => {
+                let subject = getSubject(o.name.value);
+                let object = getSubject(o.myAnimeScore.value);
+                let object1 = getSubject(o.animePlanetOverAllRating.value);
+                let object2 = getSubject(o.deviation.value);
+                let $tr = $("<tr>");
+                let $td_one = $("<td>", {
+                    html: subject
+                });
+                let $td_two = $("<td>", {
+                    html: object
+                });
+                let $td_three = $("<td>", {
+                    html: object1
+                });
+                let $td_four = $("<td>", {
+                    html: object2
+                });
+                $tr.append($td_one);
+                $tr.append($td_two);
+                $tr.append($td_three);
+                $tr.append($td_four);
+                resultsTable.append($tr);
+            });
         });
     });
 });
@@ -329,32 +330,25 @@ function createDeviationChart(results){
             type: 'column'
         },
         title: {
-            text: 'Monthly Average Rainfall'
+            text: 'Anime Rating Deviation'
         },
         subtitle: {
-            text: 'Source: WorldClimate.com'
+            text: 'Source: anime-planet.com and myanimelist.net'
         },
         xAxis: {
             categories: [
-                'Jan',
-                'Feb',
-                'Mar',
-                'Apr',
-                'May',
-                'Jun',
-                'Jul',
-                'Aug',
-                'Sep',
-                'Oct',
-                'Nov',
-                'Dec'
+                'Saikano Another Love Song',
+                'Please Save My Earth',
+                'Saiyuki Interactive',
+                'Pokemon Zoroark Master Of Illusions',
+                'Zoids Fuzors',
             ],
             crosshair: true
         },
         yAxis: {
             min: 0,
             title: {
-                text: 'Rainfall (mm)'
+                text: 'Rating(out of 10)'
             }
         },
         tooltip: {
@@ -372,12 +366,12 @@ function createDeviationChart(results){
             }
         },
         series: [{
-            name: 'Tokyo',
-            data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+            name: 'Animelist Rating',
+            data: [7.19, 7.27, 7.1, 7.09, 6.56]
 
         }, {
-            name: 'Berlin',
-            data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
+            name: 'Anime-planet Rating',
+            data: [0.5, 1.0, 1.0, 1.0, 0.5]
 
         }]
     });
