@@ -1,0 +1,1 @@
+{"Collections":[{"sheetName":"Sheet1","startColumn":"A","endColumn":"C","startRow":"2","endRow":"+","comment":"","rule":"Individual: @A*\nTypes: User\nFacts: hasName @A*,\nhasLocation @B*,\nhasGender @C*","active":true}]}
