@@ -4,16 +4,16 @@ const QUERY_PREFIX = "prefix ns2: <http://www.semanticweb.org/gurleenk/ontologie
 const QUERY_PREFIX2 = "prefix ns1:<http://www.semanticweb.org/gurleenk/ontologies/2017/10/>";
 const charImages = {
     "Kathy WHITE": "http://www.anime-planet.com/images/characters/kathy-white-128033.jpg?t=1498939238",
-    "Arthur LYNCH":"http://www.anime-planet.com/images/characters/arthur-lynch-42441.jpg?t=1371719001",
-    "Emelina ANDERSON":"http://www.anime-planet.com/images/characters/emelina-anderson-135829.jpg?t=1509294515",
-    "Margitte":"http://www.anime-planet.com/images/characters/margitte-133415.jpg?t=1508587759",
-    "Barbaros":"http://www.anime-planet.com/images/characters/barbaros-129656.jpg?t=1501344100",
-    "Sakata":"http://www.anime-planet.com/images/characters/blank_char.gif",
-    "Thomas":"http://www.anime-planet.com/images/characters/thomas-daphne-in-the-brilliant-blue-18217.jpg?t=1291420575",
-    "Sakura":"http://www.anime-planet.com/images/characters/sakura-zokusei-48044.jpg?t=1362614815",
-    "Oyakata":"http://www.anime-planet.com/images/characters/oyakata-66.jpg?t=1262949960",
-    "Kotaro":"http://www.anime-planet.com/images/characters/kotaro-yowamushi-pedal-new-generation-127607.jpg?t=1498843322",
-    "Kuma":"http://www.anime-planet.com/images/characters/kumata-shibatora-29054.jpg?t=1315246176"
+    "Arthur LYNCH": "http://www.anime-planet.com/images/characters/arthur-lynch-42441.jpg?t=1371719001",
+    "Emelina ANDERSON": "http://www.anime-planet.com/images/characters/emelina-anderson-135829.jpg?t=1509294515",
+    "Margitte": "http://www.anime-planet.com/images/characters/margitte-133415.jpg?t=1508587759",
+    "Barbaros": "http://www.anime-planet.com/images/characters/barbaros-129656.jpg?t=1501344100",
+    "Sakata": "http://www.anime-planet.com/images/characters/blank_char.gif",
+    "Thomas": "http://www.anime-planet.com/images/characters/thomas-daphne-in-the-brilliant-blue-18217.jpg?t=1291420575",
+    "Sakura": "http://www.anime-planet.com/images/characters/sakura-zokusei-48044.jpg?t=1362614815",
+    "Oyakata": "http://www.anime-planet.com/images/characters/oyakata-66.jpg?t=1262949960",
+    "Kotaro": "http://www.anime-planet.com/images/characters/kotaro-yowamushi-pedal-new-generation-127607.jpg?t=1498843322",
+    "Kuma": "http://www.anime-planet.com/images/characters/kumata-shibatora-29054.jpg?t=1315246176"
 }
 
 function getSubject(str) {
@@ -95,13 +95,19 @@ function pingSinglePlaceOnMap(place, title, map, geocoder) {
 $(() => {
     $("#characterTags").select2({
         width: "200px"
-    });
+    })
     $("#ageRating").select2({
         width: "200px"
-    });
+    })
     $("#selAnimeByLocations").select2({
         width: "400px"
-    });
+    })
+    $("#broadcastTime").select2({
+        width: '200px'
+    })
+    $("#broadcastDay, #staffCategory").select2({
+        width: '200px'
+    })
 
     $("#findAnimeByLocations").click(() => {
         var singlePlace = $("#selAnimeByLocations").val();
@@ -161,7 +167,7 @@ $(() => {
                 query: QUERY_PREFIX + " SELECT DISTINCT  ?name ?loverank " +
                 " WHERE { " +
                 "      ?subject ns2:hasCharacter ?charactername; " +
-                "               ns2:hasAgeRating ns2:"+ ageRating + ". "+
+                "               ns2:hasAgeRating ns2:" + ageRating + ". " +
                 "      ?charactername ns2:hasName ?name; " +
                 "                     ns2:hasTag \"" + characterTag + "\"; " +
                 "                     ns2:hasLoveRank ?loverank; " +
@@ -201,11 +207,11 @@ $(() => {
                 query: QUERY_PREFIX + " SELECT  (AVG (?score) AS ?animeScore) ?producerName " +
                 " WHERE { " +
                 "      ?subject ns2:hasProducer ?object; " +
-                "               ns2:hasScore ?score."+
-                "                                   "+
+                "               ns2:hasScore ?score." +
+                "                                   " +
                 "       ?object ns2:hasName ?producerName ." +
                 " } " +
-                " GROUP BY(?producerName)"+
+                " GROUP BY(?producerName)" +
                 "ORDER BY DESC(?animeScore) " +
                 " LIMIT 5"
             }
@@ -237,14 +243,14 @@ $(() => {
             data: {
                 query: QUERY_PREFIX + " SELECT  ?animename ?score ?broadcastday ?broadcasttime " +
                 " WHERE { " +
-                "      ?subject ns2:hasName ?animename;"+
+                "      ?subject ns2:hasName ?animename;" +
                 "               ns2:hasBroadcastTime \"" + broadcastTime + "\"; " +
-                "               ns2:hasBroadcastTime ?broadcasttime;"+
+                "               ns2:hasBroadcastTime ?broadcasttime;" +
                 "               ns2:hasBroadcastDay \"" + broadcastDay + "\"; " +
-                "               ns2:hasBroadcastDay ?broadcastday;"+
-                "               ns2:hasScore ?score."+
-                " FILTER NOT EXISTS {?subject  ns2:hasBroadcasttime \"unknown\"}  "+
-                "}"+
+                "               ns2:hasBroadcastDay ?broadcastday;" +
+                "               ns2:hasScore ?score." +
+                " FILTER NOT EXISTS {?subject  ns2:hasBroadcasttime \"unknown\"}  " +
+                "}" +
                 "ORDER BY DESC(?score) " +
                 " LIMIT 5"
             }
@@ -273,17 +279,17 @@ $(() => {
             method: 'post',
             data: {
                 query: QUERY_PREFIX +
-                QUERY_PREFIX2+
+                QUERY_PREFIX2 +
                 " SELECT ?myAnimeScore (AVG(?rating) AS ?animePlanetOverAllRating) ((?myAnimeScore - ?animePlanetOverAllRating) AS ?deviation) ?name " +
                 " WHERE { " +
-                "      ?subject ns2:hasReview ?review;"+
+                "      ?subject ns2:hasReview ?review;" +
                 "               ns2:hasName ?name;" +
                 "               ns2:hasScore ?myAnimeScore. " +
 
-                "      ?review ns2:hasOverallRating ?rating.  "+
-                "}"+
+                "      ?review ns2:hasOverallRating ?rating.  " +
+                "}" +
                 "GROUP BY ?myAnimeScore ?name " +
-                " ORDER BY DESC(?deviation)"+
+                " ORDER BY DESC(?deviation)" +
                 " LIMIT 5"
             }
         }).then(response => {
