@@ -111,6 +111,7 @@ $(() => {
 
     $("#findAnimeByLocations").click(() => {
         var singlePlace = $("#selAnimeByLocations").val();
+        $("#locationSpinner").show();
         $.ajax({
             url: SPARQL_ENDPOINT,
             method: 'post',
@@ -153,6 +154,7 @@ $(() => {
                 var title = o.animename.value + "    " + parseFloat(o.animePlanetOverAllRating.value).toFixed(2);
                 pingSinglePlaceOnMap(singlePlace, title, map, geocoder);
             });
+            $("#locationSpinner").hide();
         })
     });
 
