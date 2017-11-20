@@ -356,7 +356,7 @@ function createDeviationChart(results){
         tooltip: {
             headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
             pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-            '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+            '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
             footerFormat: '</table>',
             shared: true,
             useHTML: true
@@ -368,11 +368,11 @@ function createDeviationChart(results){
             }
         },
         series: [{
-            name: 'Animelist Rating',
+            name: 'Animelist',
             data: [7.19, 7.27, 7.1, 7.09, 6.56]
 
         }, {
-            name: 'Anime-planet Rating',
+            name: 'Anime-planet',
             data: [0.5, 1.0, 1.0, 1.0, 0.5]
 
         }]

@@ -3,4 +3,5 @@
 frontend/.idea/*
 apachejena/target
 *.iml
+.DS_Store
 

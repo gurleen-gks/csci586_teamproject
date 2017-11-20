@@ -75,7 +75,7 @@
                         <tr>
                             <th>Name</th>
                             <th>Image</th>
-                            <th>Animes</th>
+                            <th>Love Rank</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -104,7 +104,12 @@
                             <label for="broadcastTime">Broadcast Time</label>
                             <select id="broadcastTime">
                                 <option value="0100 (jst)" selected>01:00</option>
+                                <option value="0400 (jst)">04:00</option>
+                                <option value="0800 (jst)">08:00</option>
+                                <option value="0900 (jst)">09:00</option>
+                                <option value="1300 (jst)">13:00</option>
                                 <option value="1800 (jst)">18:00</option>
+                                <option value="2300 (jst)">23:00</option>
                             </select>
                         </div>
                         <div class="col-xs-2">
@@ -132,7 +137,9 @@
                 <fieldset class="deviation-query-container">
                     <br>
                     <div class="row">
-                        <div class="col-xs-5">
+                        <div class="col-xs-10">
+                        </div>
+                        <div class="col-xs-2">
                             <button id="findDeviation" class="btn btn-primary"><i
                                     class="glyphicon glyphicon-refresh"></i>&nbsp;Find Rating Deviation
                             </button>
@@ -158,11 +165,11 @@
                 <fieldset class="staff-query-container">
                     <br>
                     <div class="row">
-                        <div class="col-xs-5">
+                        <div class="col-xs-10">
                             <label for="staffCategory">Staff Category</label>
                             <select id="staffCategory">
-                                <option value="Director" selected>Director</option>
-                                <option value="Producer">Producer</option>
+                                <option value="Producer" selected>Producer</option>
+                                <option value="Director">Director</option>
                                 <option value="Voice Actor">Voice Actor</option>
                                 <option value="Licensor">Licensor</option>
                                 <option value="Studio">Studio</option>
